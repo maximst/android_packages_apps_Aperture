@@ -1334,7 +1334,8 @@ open class CameraActivity : AppCompatActivity() {
                     isReversedHorizontal = sharedPreferences.photoFfcMirror
                 }
             },
-            photoOutputStream
+            photoOutputStream,
+            this.getApplicationContext()
         )
 
         // Set up image capture listener, which is triggered after photo has
@@ -1399,7 +1400,8 @@ open class CameraActivity : AppCompatActivity() {
         // Create output options object which contains file + metadata
         val outputOptions = StorageUtils.getVideoMediaStoreOutputOptions(
             contentResolver,
-            location.takeUnless { singleCaptureMode }
+            location.takeUnless { singleCaptureMode },
+            this.getApplicationContext()
         )
 
         // Play shutter sound
